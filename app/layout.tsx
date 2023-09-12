@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import Navbar from './components/navbar/Navbar'
 import ClientOnly from './components/ClientOnly'
 import Modal from './components/modal/Modal'
+import RegisterModal from './components/modal/RegisterModal'
 
 const font = Nunito({
   subsets: ["latin"],
@@ -23,8 +24,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        
-          <Modal actionLabel='Entrar' title="Entrar" isOpen/>
+          <RegisterModal/>
+          {/* <Modal actionLabel='Entrar' title="Entrar" isOpen/> */}
           <Navbar/>
         
         {children}
