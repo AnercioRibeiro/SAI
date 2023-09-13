@@ -24,11 +24,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+        <ClientOnly>
           <RegisterModal/>
-          {/* <Modal actionLabel='Entrar' title="Entrar" isOpen/> */}
           <Navbar/>
-        
+          </ClientOnly>
+        <div className='pb-20 pt-28'>
         {children}
+        </div>
+        
         </body>
     </html>
   )
