@@ -8,7 +8,7 @@ import  useRegisterModal  from '@/app/hooks/useRegisterModal';
 import Modal from './Modal';
 import Heading from '../Heading';
 import Input from '../inputs/input';
-import toast from 'react-hot-toast/headless';
+import toast from 'react-hot-toast';
 import Button from '../Button';
 const RegisterModal = () => {
     const registerModal = useRegisterModal();
@@ -35,7 +35,7 @@ const onSubmit: SubmitHandler<FieldValues> = (data) => {
             registerModal.onClose();
          })
          .catch((error) =>{
-          toast.error('Something went wrong');
+          toast.error('Ocorreu algum erro!!');
          })
          .finally(() =>{
             setIsLoading(false);
@@ -85,6 +85,19 @@ const footerContent = (
         icon={FcGoogle}
         onClick={() =>{}} 
         />
+        <div className="text-neutral-500 text-center mt-4 font-light">
+            <div className="justify-center flex flex-row items-center gap-2">
+                <div>
+                    Já tem uma conta?
+                </div>
+                <div onClick={registerModal.onClose}
+                className="text-neutral-800 cursor-pointer 
+                hover:underline">
+                    Entrar
+                </div>
+            </div>
+        </div>
+    
     </div>
 )
     return ( 
