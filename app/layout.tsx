@@ -4,9 +4,9 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Navbar from './components/navbar/Navbar'
 import ClientOnly from './components/ClientOnly'
-import Modal from './components/modal/Modal'
-import RegisterModal from './components/modal/RegisterModal'
+import RegisterModal from './components/modals/RegisterModal'
 import ToasterProvider from './providers/ToasterProvider'
+import LoginModal from './components/modals/LoginModal'
 
 const font = Nunito({
   subsets: ["latin"],
@@ -27,9 +27,10 @@ export default function RootLayout({
       <body className={font.className}>
         <ClientOnly>
           <ToasterProvider />
+          <LoginModal/>
           <RegisterModal/>
           <Navbar/>
-          </ClientOnly>
+        </ClientOnly>
         <div className='pb-20 pt-28'>
         {children}
         </div>
