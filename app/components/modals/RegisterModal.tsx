@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
+import { signIn } from 'next-auth/react';
 import { useCallback, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import  useRegisterModal  from '@/app/hooks/useRegisterModal';
@@ -83,7 +84,7 @@ const footerContent = (
         outline
         label="Registo com Google"
         icon={FcGoogle}
-        onClick={() =>{}} 
+        onClick={() =>signIn('google')} 
         />
         <div className="text-neutral-500 text-center mt-4 font-light">
             <div className="justify-center flex flex-row items-center gap-2">
