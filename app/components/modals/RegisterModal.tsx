@@ -28,21 +28,47 @@ const RegisterModal = () => {
     }
 });
 
-const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    setIsLoading(true);
-
-    axios.post('/api/register', data)
-         .then(() =>{
-            registerModal.onClose();
-         })
-         .catch((error) =>{
-          toast.error('Ocorreu algum erro!!');
-         })
-         .finally(() =>{
-            setIsLoading(false);
-         })
+// const onSubmit: SubmitHandler<FieldValues> = (data) => {
+//     setIsLoading(true);
+//     toast.loading('Carregando...', {
+//         duration: 3000, // Specify the duration in milliseconds (2 seconds in this example)
+//       });
+//     axios.post('/api/register', data)
+//          .then(() =>{
+//             registerModal.onClose();
+//          })
+//          .catch((error) =>{
+//           toast.error('Ocorreu algum erro!!');
+//          })
+//          .finally(() =>{
+//             setIsLoading(false);
+//          })
    
-}
+// }
+
+const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    // Show a loading toast while the request is being made
+    const loadingToast = toast.loading('Carregando...');
+  
+    try {
+      const response = await axios.post('/api/register', data);
+      
+      // If the request succeeds, show a success toast
+      if (response.status === 200) {
+        toast.success('Registado com sucesso');
+        registerModal.onClose();
+      } else {
+        // Handle other success scenarios if needed
+      }
+    } catch (error) {
+      // If the request fails, show an error toast
+      toast.error('Ocorreu um erro!');
+    } finally {
+      // Close the loading toast when the request is complete
+      toast.dismiss(loadingToast);
+      setIsLoading(false);
+    }
+  }
 
 const bodyContent = (
     <div className="flex flex-col gap-4">

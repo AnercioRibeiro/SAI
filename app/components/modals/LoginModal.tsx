@@ -32,26 +32,59 @@ const LoginModal = () => {
     }
 });
 
-const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    setIsLoading(true);
-    signIn('credentials', {
-        ...data,
-        redirect: false,
-    })
-    .then((callBack) => {
-      setIsLoading(false);
+// const onSubmit: SubmitHandler<FieldValues> = (data) => {
+//     setIsLoading(true);
+//     toast.loading('Carregando...');
+//     signIn('credentials', {
+//         ...data,
+//         redirect: false,
+//     })
+//     .then((callBack) => {
+//       setIsLoading(false);
 
-      if (callBack?.ok) {
-        toast.success('Seja Bem-vindo');
-        router.refresh();
-        loginModal.onClose();
-      }
+//       if (callBack?.ok) {
+//         toast.success('Seja Bem-vindo');
+//         router.refresh();
+//         loginModal.onClose();
+//       }
 
-      if (callBack?.error) {
-        toast.error(callBack.error);
-      }
-    })
+//       if (callBack?.error) {
+//         toast.error(callBack.error);
+//       }
+//     })
+// }
+
+const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  // Show a loading toast while the request is being made
+  const loadingToast = toast.loading('Carregando...');
+
+  try {
+    const callBack = await signIn('credentials', {
+      ...data,
+      redirect: false,
+    });
+
+    // If the request succeeds, show a success toast
+    if (callBack?.ok) {
+      toast.success('Seja Bem-vindo');
+      router.refresh();
+      loginModal.onClose();
+    }
+
+    // If the request fails, show an error toast
+    if (callBack?.error) {
+      toast.error(callBack.error);
+    }
+  } catch (error) {
+    // Handle other error scenarios if needed
+    toast.error('Ocorreu um erro!');
+  } finally {
+    // Close the loading toast when the request is complete
+    toast.dismiss(loadingToast);
+    setIsLoading(false);
+  }
 }
+
 
 const bodyContent = (
     <div className="flex flex-col gap-4">
