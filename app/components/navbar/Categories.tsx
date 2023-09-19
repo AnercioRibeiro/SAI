@@ -1,7 +1,12 @@
+'use client';
+
 import Container from "../Container";
-import { TbBeach } from "react-icons/tb";
-import { GiWindmill } from "react-icons/gi";
-import { MdOutlineVilla } from "react-icons/md"
+import { IoDiamond } from 'react-icons/io5';
+import { FaSkiing } from 'react-icons/fa';
+import { TbBeach, TbMountain, TbPool } from "react-icons/tb";
+import { BsSnow } from "react-icons/bs";
+import { GiBarn, GiBoatFishing, GiCactus, GiCastle, GiCaveEntrance, GiForestCamp, GiIsland, GiWindmill } from "react-icons/gi";
+import { MdOutlineVilla } from "react-icons/md";
 import CategoryBox from "../CategoryBox";
 import { usePathname, useSearchParams } from "next/navigation";
 
@@ -20,6 +25,63 @@ export const categories = [
         label: 'Moderna',
         icon: MdOutlineVilla,
         description: 'Propriedade próxima a um resort.'
+    },
+    {
+        label: 'Countryside',
+        icon: TbMountain,
+        description: 'Propriedade próxima a um resort.'
+    },
+    {
+        label: 'Piscinas',
+        icon: TbPool,
+        description: 'Propriedade próxima a um resort.'
+    },
+    {
+        label: 'Ilhas',
+        icon: GiIsland,
+        description: 'Propriedade próxima a um resort.'
+    },
+    {
+        label: 'Lago',
+        icon: GiBoatFishing,
+        description: 'Propriedade junto a um lago.'
+    },
+    {
+        label: 'Castelos',
+        icon: GiCastle,
+        description: 'Propriedade junto a um lago.'
+    },
+    {
+        label: 'Campismo',
+        icon: GiForestCamp,
+        description: 'Propriedade junto a um lago.'
+    }
+    ,
+    {
+        label: 'Neve',
+        icon: BsSnow,
+        description: 'Propriedade junto a um lago.'
+    },
+    {
+        label: 'Cavernas',
+        icon: GiCaveEntrance,
+        description: 'Propriedade junto a um lago.'
+    },
+    {
+        label: 'Deserto',
+        icon: GiCactus,
+        description: 'Propriedade junto a um lago.'
+    }
+    ,
+    {
+        label: 'Celeiro',
+        icon: GiBarn,
+        description: 'Propriedade junto a um lago.'
+    },
+    {
+        label: 'Luxuoso',
+        icon: IoDiamond,
+        description: 'Propriedade junto a um lago.'
     }
 ]
 

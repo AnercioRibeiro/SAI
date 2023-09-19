@@ -1,4 +1,5 @@
 'use client';
+
 import { signIn } from 'next-auth/react';
 import axios from 'axios';
 import { AiFillGithub } from "react-icons/ai";
@@ -85,6 +86,10 @@ const onSubmit: SubmitHandler<FieldValues> = async (data) => {
   }
 }
 
+const toggle = useCallback(()=>{
+    loginModal.onClose();
+    registerModal.onOpen();
+}, [loginModal, registerModal]);
 
 const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -123,12 +128,12 @@ const footerContent = (
         <div className="text-neutral-500 text-center mt-4 font-light">
             <div className="justify-center flex flex-row items-center gap-2">
                 <div>
-                    Já tem uma conta?
+                    Primeira vez ?
                 </div>
-                <div onClick={registerModal.onClose}
+                <div onClick={toggle}
                 className="text-neutral-800 cursor-pointer 
                 hover:underline">
-                    Entrar
+                    Faça o seu registo
                 </div>
             </div>
         </div>
