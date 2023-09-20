@@ -48,7 +48,7 @@ export const authOptions: AuthOptions = {
                     throw new Error('Credenciais inválidas');
                 }
 
-                return user;
+                return await user;
             },
         })
 
