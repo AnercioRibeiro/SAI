@@ -10,7 +10,7 @@ import  useRegisterModal  from '@/app/hooks/useRegisterModal';
 import useLoginModal from '@/app/hooks/useLoginModal';
 import Modal from './Modal';
 import Heading from '../Heading';
-import Input from '../inputs/Input';
+import Input from '../inputs/input';
 import toast from 'react-hot-toast';
 import Button from '../Button';
 import { useRouter } from 'next/navigation';
