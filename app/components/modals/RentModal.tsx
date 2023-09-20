@@ -6,6 +6,7 @@ import Modal from "./Modal";
 import Heading from "../Heading";
 import { categories } from "../navbar/Categories";
 import CategoryInput from "../inputs/CategoryInput";
+import CountrySelect from "../inputs/CountrySelect";
 
 
 enum STEPS{
@@ -105,8 +106,15 @@ let bodyContent = (
 
 if (step === STEPS.LOCATION) {
     bodyContent = (
-        <div>
-            Adicione a sua localização
+        <div className="flex flex-col gap-8">
+            <Heading 
+                 title="Onde a sua propriedade está localizada?"
+                 subtitle="Ajude os hóspedes a encontrar!"
+                 />
+            <CountrySelect 
+          
+          onChange={(value) => setCustomValue('location', value)} 
+        />
         </div>
     )
 }
