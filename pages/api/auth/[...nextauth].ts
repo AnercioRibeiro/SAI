@@ -19,13 +19,13 @@ export const authOptions: AuthOptions = {
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
         }),
         CredentialsProvider({
-            name : 'credentials',
-            credentials:{
-                email: {label: 'email', type: 'text'},
-                password: {label: 'password', type: 'password'},
+            name: 'credentials',
+            credentials: {
+                email: { label: 'email', type: 'text' },
+                password: { label: 'password', type: 'password' },
             },
-            async authorize(credentials) {
-                if (!credentials?.email || !credentials?.password){
+            async authorize(credentials, req) {
+                if (!credentials?.email || !credentials?.password) {
                     throw new Error('Credenciais inválidas');
                 }
 
@@ -36,7 +36,7 @@ export const authOptions: AuthOptions = {
                 });
 
                 if (!user || !user.hashedPassword) {
-                    throw new Error('Credenciais inváildas');
+                    throw new Error('Credenciais inválidas'); // Return null if user not found or no hashed password
                 }
 
                 const isCorrectPassword = await bcrypt.compare(
@@ -45,10 +45,15 @@ export const authOptions: AuthOptions = {
                 );
 
                 if (!isCorrectPassword) {
-                    throw new Error('Credenciais inválidas');
+                    throw new Error('Credenciais inválidas'); // Return null if password is incorrect
                 }
 
-                return await user;
+                return {
+                    id: user.id.toString(), // Ensure 'id' is a string
+                    name: user.name || null,
+                    email: user.email || null,
+                    // Add other user properties here as needed
+                };
             },
         })
 
@@ -62,4 +67,5 @@ export const authOptions: AuthOptions = {
     },
     secret: process.env.NEXTAUTH_SECRET,
 };
-export default NextAuth(authOptions)
+
+export default NextAuth(authOptions);

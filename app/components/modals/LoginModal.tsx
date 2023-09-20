@@ -121,7 +121,7 @@ const footerContent = (
         <hr />
         <Button 
         outline
-        label="Registo com Google"
+        label="Entre com a sua conta Google"
         icon={FcGoogle}
         onClick={() =>signIn('google')} 
         />
