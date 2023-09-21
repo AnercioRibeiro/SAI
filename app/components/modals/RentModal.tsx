@@ -46,7 +46,12 @@ const {
     }
 });
 
+const location = watch('location');
 const category = watch('category');
+const guestCount = watch('guestCount');
+const roomCount = watch('roomCount');
+const bathroomCount = watch('bathroomCount');
+const imageSrc = watch('imageSrc');
 
 const setCustomValue = (id: string, value: any) =>{
     setValue(id, value, {
@@ -112,8 +117,7 @@ if (step === STEPS.LOCATION) {
                  subtitle="Ajude os hóspedes a encontrar!"
                  />
             <CountrySelect 
-          
-          onChange={(value) => setCustomValue('location', value)} 
+                    value={location} onChange={(value) => setCustomValue('location', value)} 
         />
         </div>
     )
