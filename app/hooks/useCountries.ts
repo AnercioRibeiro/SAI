@@ -1,11 +1,12 @@
-import  countries   from '@/app/data/countries.json';
+//import  countries   from '@/app/data/countries.json';
+import  countries   from '@/app/data/provincies.json';
 
 const formattedCountries = countries.map((country) =>({
-    value: country.cca2,
-    label: country.name.common,
-    flag: country.flag,
-    latlng: country.latlng,
-    region: country.region
+    value: country.Abbreviation,
+    label: country.Name,
+    //flag: country.flag,
+    latlng: country.LatLng,
+    region: country.Capital
 }));
 
 const useCountries = () => {

@@ -1,0 +1,307 @@
+[
+    {
+      "Name": "Bengo",
+      "Abbreviation": "BG",
+      "Capital": "Caxito",
+      "PrimaryLanguage": "Portuguese",
+      "LatLng": {
+        "Latitude": -8.5781,
+        "Longitude": 13.6595
+      },
+      "Municipalities": [
+        "Ambriz",
+        "Bula-Atumba",
+        "Dande",
+        "Dembos",
+        "Nambuangongo",
+        "Pango-Aluquém",
+        "Nambuangongo"
+      ]
+    },
+    {
+      "Name": "Benguela",
+      "Abbreviation": "BL",
+      "Capital": "Benguela",
+      "PrimaryLanguage": "Portuguese",
+      "LatLng": {
+        "Latitude": -12.5763,
+        "Longitude": 13.4055
+      },
+      "Municipalities": [
+        "Balombo",
+        "Baía Farta",
+        "Benguela",
+        "Bocoio",
+        "Caimbambo",
+        "Catumbela",
+        "Chongoroi",
+        "Cubal",
+        "Ganda",
+        "Lobito"
+      ]
+    },
+    {
+      "Name": "Bié",
+      "Abbreviation": "BI",
+      "Capital": "Kuito",
+      "PrimaryLanguage": "Portuguese",
+      "LatLng": {
+        "Latitude": -12.3833,
+        "Longitude": 16.9333
+      },
+      "Municipalities": [
+        "Andulo",
+        "Camacupa",
+        "Catabola",
+        "Chinguar",
+        "Chitembo",
+        "Cuemba",
+        "Cunhinga",
+        "Kuito",
+        "Kunhinga",
+        "Nharea"
+      ]
+    },
+    {
+      "Name": "Cabinda",
+      "Abbreviation": "CA",
+      "Capital": "Cabinda",
+      "PrimaryLanguage": "Portuguese",
+      "LatLng": {
+        "Latitude": -5.5557,
+        "Longitude": 12.1924
+      },
+      "Municipalities": [
+        "Belize",
+        "Buco-Zau",
+        "Cabinda",
+        "Cacongo",
+        "Landana",
+        "Lândana",
+        "Lucusse",
+        "Macongo"
+      ]
+    },
+    {
+      "Name": "Cunene",
+      "Abbreviation": "CU",
+      "Capital": "Ondjiva",
+      "PrimaryLanguage": "Portuguese",
+      "LatLng": {
+        "Latitude": -17.0667,
+        "Longitude": 15.7333
+      },
+      "Municipalities": [
+        "Cahama",
+        "Cuanhama",
+        "Curoca",
+        "Cuanhama",
+        "Curoca",
+        "Ombadja"
+      ]
+    },
+    {
+      "Name": "Huambo",
+      "Abbreviation": "HU",
+      "Capital": "Huambo",
+      "PrimaryLanguage": "Portuguese",
+      "LatLng": {
+        "Latitude": -12.7761,
+        "Longitude": 15.7392
+      },
+      "Municipalities": [
+        "Bailundo",
+        "Caála",
+        "Catchiungo",
+        "Chinjenje",
+        "Ekunha",
+        "Huambo",
+        "Londuimbali",
+        "Longonjo",
+        "Mungo",
+        "Tchicala Tcholoanga"
+      ]
+    },
+    {
+      "Name": "Huíla",
+      "Abbreviation": "HL",
+      "Capital": "Lubango",
+      "PrimaryLanguage": "Portuguese",
+      "LatLng": {
+        "Latitude": -14.9281,
+        "Longitude": 13.5314
+      },
+      "Municipalities": [
+        "Caconda",
+        "Cacula",
+        "Caluquembe",
+        "Chibia",
+        "Chipindo",
+        "Humpata",
+        "Jamba",
+        "Lubango",
+        "Matala",
+        "Quilengues"
+      ]
+    },
+    {
+      "Name": "Luanda",
+      "Abbreviation": "LU",
+      "Capital": "Luanda",
+      "PrimaryLanguage": "Portuguese",
+      "LatLng": {
+        "Latitude": -8.8399,
+        "Longitude": 13.2894
+      },
+      "Municipalities": [
+        "Belas",
+        "Cacuaco",
+        "Cazenga",
+        "Icolo e Bengo",
+        "Luanda",
+        "Quiçama",
+        "Talatona",
+        "Viana"
+      ]
+    },
+    {
+      "Name": "Lunda Norte",
+      "Abbreviation": "LN",
+      "Capital": "Dundo",
+      "PrimaryLanguage": "Portuguese",
+      "LatLng": {
+        "Latitude": -7.6333,
+        "Longitude": 20.7000
+      },
+      "Municipalities": [
+        "Cambulo",
+        "Capenda-Camulemba",
+        "Chitato",
+        "Cuango",
+        "Cuilo",
+        "Dundo",
+        "Lubalo",
+        "Lucapa",
+        "Xá-Muteba"
+      ]
+    },
+    {
+      "Name": "Lunda Sul",
+      "Abbreviation": "LS",
+      "Capital": "Saurimo",
+      "PrimaryLanguage": "Portuguese",
+      "LatLng": {
+        "Latitude": -9.6643,
+        "Longitude": 20.3963
+      },
+      "Municipalities": [
+        "Cacolo",
+        "Dala",
+        "Muconda",
+        "Saurimo"
+      ]
+    },
+    {
+      "Name": "Malanje",
+      "Abbreviation": "MA",
+      "Capital": "Malanje",
+      "PrimaryLanguage": "Portuguese",
+      "LatLng": {
+        "Latitude": -9.5408,
+        "Longitude": 16.3477
+      },
+      "Municipalities": [
+        "Cacuso",
+        "Calandula",
+        "Cambundi-Catembo",
+        "Cangandala",
+        "Kiwaba N'zogi",
+        "Malanje",
+        "Marimba",
+        "Massango",
+        "Mucari",
+        "Quela"
+      ]
+    },
+    {
+      "Name": "Moxico",
+      "Abbreviation": "MO",
+      "Capital": "Luena",
+      "PrimaryLanguage": "Portuguese",
+      "LatLng": {
+        "Latitude": -11.7800,
+        "Longitude": 19.9167
+      },
+      "Municipalities": [
+        "Alto Zambeze",
+        "Bundas",
+        "Camanongue",
+        "Léua",
+        "Luau",
+        "Luena",
+        "Moxico",
+        "Mucussueje",
+        "Lumbala N'guimbo"
+      ]
+    },
+    {
+      "Name": "Namibe",
+      "Abbreviation": "NA",
+      "Capital": "Moçâmedes",
+      "PrimaryLanguage": "Portuguese",
+      "LatLng": {
+        "Latitude": -15.1964,
+        "Longitude": 12.1575
+      },
+      "Municipalities": [
+        "Bibala",
+        "Camucuio",
+        "Moçâmedes",
+        "Tômbua",
+        "Virei"
+      ]
+    },
+    {
+      "Name": "Uíge",
+      "Abbreviation": "UI",
+      "Capital": "Uíge",
+      "PrimaryLanguage": "Portuguese",
+      "LatLng": {
+        "Latitude": -7.6111,
+        "Longitude": 15.0583
+      },
+      "Municipalities": [
+        "Alto Cauale",
+        "Ambuila",
+        "Bembe",
+        "Buengas",
+        "Maquela do Zombo",
+        "Mucaba",
+        "Negage",
+        "Puri",
+        "Quitexe",
+        "Sanza Pombo",
+        "Songo",
+        "Uíge"
+      ]
+    },
+    {
+      "Name": "Zaire",
+      "Abbreviation": "ZA",
+      "Capital": "M'banza-Kongo",
+      "PrimaryLanguage": "Portuguese",
+      "LatLng": {
+        "Latitude": -6.2833,
+        "Longitude": 14.2333
+      },
+      "Municipalities": [
+        "Cuimba",
+        "M'banza-Kongo",
+        "Noqui",
+        "Nzeto",
+        "Soyo",
+        "Tomboco"
+      ]
+    }
+  ]
+  
