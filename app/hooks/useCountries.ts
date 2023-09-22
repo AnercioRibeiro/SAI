@@ -1,19 +1,19 @@
 //import  countries   from '@/app/data/countries.json';
-import  countries   from '@/app/data/provincies.json';
+import  provincies   from '@/app/data/provincies.json';
 
-const formattedCountries = countries.map((country) =>({
-    value: country.Abbreviation,
-    label: country.Name,
+const formattedProvincies = provincies.map((province) =>({
+    value: province.Abbreviation,
+    label: province.Name,
     //flag: country.flag,
-    latlng: country.LatLng,
-    region: country.Capital
+    latlng: province.LatLng,
+    region: province.Capital
 }));
 
 const useCountries = () => {
-    const getAll = () => formattedCountries;
+    const getAll = () => formattedProvincies;
 
     const getByValue = (value: string) => {
-    return formattedCountries.find((item) => item.value === value);
+    return formattedProvincies.find((item) => item.value === value);
 }
 return {
     getAll,
