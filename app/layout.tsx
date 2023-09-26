@@ -28,13 +28,13 @@ export default async function RootLayout({
   const currentUser = await getCurrentUser();
 
   return (
-    <html lang="en">
+    <html lang="pt">
       <body className={font.className}>
         <ClientOnly>
           <ToasterProvider />
-          <RentModal/>
           <LoginModal/>
           <RegisterModal/>
+          <RentModal/>
           <Navbar currentUser={currentUser}/>
         </ClientOnly>
         <div className='pb-20 pt-28'>
