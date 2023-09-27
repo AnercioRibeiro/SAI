@@ -117,15 +117,20 @@ const Modal:  React.FC<ModalProps> = ({
                 justify-center
                 relative
                 border-b-[1px]">
-                                <button onClick={handleClose} className=" p-1
+
+                <button
+                  className="
+                    p-1
                     border-0 
                     hover:opacity-70
                     transition
                     absolute
-                    left-9">
-                                <IoMdClose />
-
-                                </button>
+                    left-9
+                  "
+                  onClick={handleClose}
+                >
+                  <IoMdClose size={18} />
+                </button>
                                 <div className="text-lg font-semibold">
                                     {title}
                                 </div>
@@ -138,17 +143,19 @@ const Modal:  React.FC<ModalProps> = ({
             {/**FOOTER */}
             <div className="flex flex-col gap-2 p-6">
                 <div className="flex flex-row items-center gap-4 w-full">
-                    {secondaryAction && secondaryActionLabel && (
-                    <Button outline 
-                            disabled={disabled} label={actionLabel} 
-                            onClick={handleSecondaryAction}
-                    />
-                    )}
+                {secondaryAction && secondaryActionLabel && (
                     <Button 
-                            disabled={disabled} 
-                            label={actionLabel} 
-                            onClick={handleSubmit}
-                    />
+                      disabled={disabled} 
+                      label={secondaryActionLabel} 
+                      onClick={handleSecondaryAction}
+                      outline
+                    />  
+                  )}
+                  <Button 
+                    disabled={disabled} 
+                    label={actionLabel} 
+                    onClick={handleSubmit}
+                  />
                 </div>
                 {footer}
                 </div>
