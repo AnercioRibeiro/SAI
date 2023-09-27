@@ -90,7 +90,7 @@ const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     }
     const loadingToast = toast.loading('Carregando...');
     try{
-        const response = await axios.post('/api/listing', data);
+        const response = await axios.post('/api/listings', data);
         
         if (response.status === 200) {
             toast.success('Registado com sucesso');
