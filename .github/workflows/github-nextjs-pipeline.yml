@@ -1,27 +1,26 @@
-	
+name: Build and Deploy
+
 on:
-    push:
-      branches: [ main, master ]
-    pull_request:
-      branches: [ main, master ]
-   jobs:
-    test:
-      timeout-minutes: 60
-      runs-on: ubuntu-latest
-      steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Main Branch
+        uses: actions/checkout@v3
         with:
-          node-version: '18.x'
-      - name: Install dependencies
-        run: npm ci
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
-      - name: Run Playwright tests
-        run: npx playwright test
-      - uses: actions/upload-artifact@v2
-        if: always()
+          fetch-depth: 0
+          ref: main
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
         with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
+          node-version: "18.x"
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Website
+        run: npm run build
