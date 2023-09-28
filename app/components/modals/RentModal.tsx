@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
 import ImageUpload from "../inputs/ImageUpload";
-import Input from "../inputs/Input";
+import Input from "../inputs/input";
 // import Map from "../Map";
 
 
