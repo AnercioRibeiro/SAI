@@ -21,6 +21,7 @@ model Listing {
   guestCount     Int
   locationValue  String
   userId         Int
+  imags         Imag[]
 
   user           User       @relation(fields: [userId], references: [id])
   reservations   Reservation[]
@@ -72,5 +73,12 @@ model Reservation {
   createdAt  DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id])
+  listing Listing  @relation(fields: [listingId], references: [id])
+}
+
+model Imag {
+  id         Int      @id @default(autoincrement())
+  imageSrc   String
+  listingId  Int
   listing Listing  @relation(fields: [listingId], references: [id])
 }
