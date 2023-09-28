@@ -26,7 +26,7 @@ const EmptyState: React.FC<EmptyState> = ({
             />
             <div className="w-48 mt-4">
                 { showReset && (
-                    <Button outline label="Remover todos filtros" />
+                    <Button  outline label="Remover todos filtros" />
                 )}
             </div>
         </div>
