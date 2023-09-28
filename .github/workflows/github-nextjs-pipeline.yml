@@ -1,33 +1,27 @@
-trigger:
-    - main
-    
-    pool:
-      vmImage: 'ubuntu-latest'
-    
-    steps:
-    - task: NodeTool@0
-      inputs:
-        versionSpec: '18.x'
-      displayName: 'Install Node.js'
-    
-    - script: |
-        npm install
-        npm run build
-      displayName: 'npm install and build'
-    - task: ArchiveFiles@1
-      displayName: 'Archive files '
-      inputs:
-        rootFolder: '$(System.DefaultWorkingDirectory)'
-        includeRootFolder: false
-    
-    - task: CopyFiles@2
-      displayName: 'Copy File to: $(TargetFolder)'
-      inputs:
-        SourceFolder: '$(Build.ArtifactStagingDirectory)'
-        Contents: '$(Build.BuildId).zip'
-        TargetFolder: '$(Build.ArtifactStagingDirectory)\ArtifactsToBePublished'
-    
-    - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact: SampleApp'
-      inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)\ArtifactsToBePublished'
+	
+on:
+    push:
+      branches: [ main, master ]
+    pull_request:
+      branches: [ main, master ]
+   jobs:
+    test:
+      timeout-minutes: 60
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests
+        run: npx playwright test
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
