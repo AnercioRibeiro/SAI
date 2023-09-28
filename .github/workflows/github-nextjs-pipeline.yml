@@ -1,8 +1,3 @@
-# Node.js
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
 trigger:
     - main
     
@@ -33,6 +28,6 @@ trigger:
         TargetFolder: '$(Build.ArtifactStagingDirectory)\ArtifactsToBePublished'
     
     - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact: SAI'
+      displayName: 'Publish Artifact: SampleApp'
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)\ArtifactsToBePublished'
