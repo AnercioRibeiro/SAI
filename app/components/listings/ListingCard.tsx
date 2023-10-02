@@ -75,17 +75,18 @@ const ListingCard: React.FC<ListingCardProps> = ({
   return (
     
     <div 
-    onClick={() => router.push('/listings/${data.id}')}
-    className="col-span-1 cursor-pointer group hover:shadow-md"
+    onClick={() => router.push(`/listings/${data.id}`)}
+    className="col-span-1 cursor-pointer group"
     >
-        <div className="flex flex-col gap-2 w-full">
-            <div className="aspect-square w-full 
+        <div className="w-full h-3/4 flex flex-col gap-2">
+            <div className="aspect-square 
             relative overflow-hidden
-            rounded-xl">
+            rounded-t-lg w-full">
                 <Image fill 
                         alt="Propriedades"
                              src={data.imageSrc} className="object-cover 
-                                                h-full w-full 
+                                                h-3/4
+                                                w-full 
                                                 group-hover:scale-110
                                                 transition"/>
                     <div className="absolute top-3 right-3">
@@ -95,11 +96,14 @@ const ListingCard: React.FC<ListingCardProps> = ({
                             />
 
                     </div>
+                    <div className="font-bold text-white absolute bottom-2 left-3">
+                 {price} Akz / Mês
             </div>
-            <div className="font-semibold text-lg">
+            </div>
+            <div className="font-semibold text-sm">
                     {location?.region}, {location?.label}
             </div>
-            <div className="h-10 
+            <div className="
                             grid 
                             grid-cols-7 
                             grid-rows-1 
@@ -108,46 +112,38 @@ const ListingCard: React.FC<ListingCardProps> = ({
                             py-2 px-2 
                           text-black
                           rounded-b-lg">
-                <span className="col-span-3">
+                <span className="col-span-3 text-sm">
                     {data.title}
                 </span>
                 <span className="col-span-1">
-                    <GiBed size={24} /> 
+                    <GiBed className="text-right" size={20} /> 
                 </span>
-                <span className="col-span-1">
+                <span className="col-span-1 text-sm">
                     {data.bathroomCount}
                 </span>
-                {/* <span className="col-span-1">
-                    <GiHouse size={24} /> 
+                 {/* <span className="col-span-1">
+                    <GiHouse size={20} /> 
                 </span>
-                <span className="col-span-1">
+                {/* <span className="col-span-1 text-sm">
                     182m2 
                 </span> */}
                 <span className="col-span-1">
-                    <GiBathtub size={24} /> 
-                </span>
-                <span className="text-right">
+                    <GiBathtub size={20} /> 
+                </span> 
+                <span className="text-right text-sm">
                     {data.bathroomCount}
                 </span>
             </div>
-            <div className="font-light text-neutral-500">
+            {/* <div className="font-light text-neutral-500">
                 {reservationDate || data.category}
-            </div>
-            <div className="flex flex-row items-center gap-1">
-            <div className="font-semibold">
-                 {price} AKZ
-            </div>
+            </div> */}
+            {/* <div className="flex flex-row items-center gap-1">
+            
             { reservation && (
                 <div className="font-light"> Diária</div>
             )}
-            </div>
-            {onAction && actionLabel && (
-                <Button 
-                    disabled={disabled}
-                    small label={actionLabel}
-                    onClick={handleCancel}
-                />
-            )}
+            </div> */}
+        
         </div>
     </div>
 
