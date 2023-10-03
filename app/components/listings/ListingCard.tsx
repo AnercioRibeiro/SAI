@@ -20,7 +20,7 @@ import { GiBathtub, GiBed, GiHouse } from "react-icons/gi";
 interface ListingCardProps {
   data: SafeListing;
   reservation?: Reservation;
-  onAction?: (id: number) => void;
+  onAction?: (id: string) => void;
   disabled?: boolean;
   actionLabel?: string;
   actionId?: string;
