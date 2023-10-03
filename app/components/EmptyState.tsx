@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import Heading from "./Heading";
 import Button from "./Button";
+import { MouseEvent } from "react";
 
 interface EmptyState{
     title?: string;
@@ -26,7 +27,7 @@ const EmptyState: React.FC<EmptyState> = ({
             />
             <div className="w-48 mt-4">
                 { showReset && (
-                    <Button  outline label="Remover todos filtros" />
+                    <Button  outline label="Remover todos filtros" onClick={console.log} />
                 )}
             </div>
         </div>

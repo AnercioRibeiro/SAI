@@ -30,34 +30,33 @@ const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
       return loginModal.onOpen();
     }
 
-    try {
-      let request;
+    let requestPromise;
+    let successMessage;
+    let errorMessage;
 
-      if (hasFavorited) {
-        request = () => axios.delete(`/api/favorites/${listingId}`);
-      } else {
-        request = () => axios.post(`/api/favorites/${listingId}`);
-      }
-
-      await request();
-      router.refresh();
-      toast.success('Adicionado a lista de favoritos');
-    } catch (error) {
-      toast.error('Something went wrong.');
+    if (hasFavorited) {
+      requestPromise = axios.delete(`/api/favorites/${listingId}`);
+      successMessage = 'Removido da lista de favoritos';
+      errorMessage = 'Erro ao remover da lista de favoritos';
+    } else {
+      requestPromise = axios.post(`/api/favorites/${listingId}`);
+      successMessage = 'Adicionado à lista de favoritos';
+      errorMessage = 'Erro ao adicionar à lista de favoritos';
     }
-  }, 
-  [
-    currentUser, 
-    hasFavorited, 
-    listingId, 
-    loginModal,
-    router
-  ]);
+
+    try {
+      await requestPromise;
+      router.refresh();
+      toast.success(successMessage);
+    } catch (error) {
+      toast.error(errorMessage);
+    }
+  }, [currentUser, hasFavorited, listingId, loginModal, router]);
 
   return {
     hasFavorited,
     toggleFavorite,
-  }
-}
+  };
+};
 
 export default useFavorite;
