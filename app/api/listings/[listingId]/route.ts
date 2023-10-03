@@ -4,7 +4,7 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import prisma from "@/app/libs/prismadb";
 
 interface IParams {
-  listingId?: number;
+  listingId?: string;
 }
 
 export async function DELETE(
@@ -25,7 +25,7 @@ export async function DELETE(
 
   const listing = await prisma.listing.deleteMany({
     where: {
-      id: listingId,
+      id: parseInt(listingId as string),
       userId: currentUser.id
     }
   });

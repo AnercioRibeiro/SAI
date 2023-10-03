@@ -14,7 +14,6 @@ export default async function Home() {
   if (listings.length === 0) {
     return(
       <ClientOnly>
-
         <EmptyState showReset/>
       </ClientOnly>
     )
@@ -23,9 +22,15 @@ export default async function Home() {
     
     <ClientOnly>
       <Container>
-        <div className="pt-24 grid grid-cols-1 sm:grid-cols-2
-                        md:grid-cols-3 lg:grid-cols-4 
-                        xl:grid-cols-4 grid-rows-1 2xl:grid-cols-6 gap-6">
+        <div className="pt-24 
+                        grid grid-cols-1 
+                        sm:grid-cols-2
+                        md:grid-cols-3 
+                        lg:grid-cols-4 
+                        xl:grid-cols-4 
+                        grid-rows-1 
+                        2xl:grid-cols-6 
+                        gap-6">
                           
               {listings.map((listing: any) => {
                   return (

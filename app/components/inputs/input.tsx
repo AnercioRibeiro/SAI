@@ -27,6 +27,7 @@ const Input: React.FC<InputProps> = ({
   register,
   required,
   errors,
+  
 }) => {
   return (
     <div className="w-full relative">

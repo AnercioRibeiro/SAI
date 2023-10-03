@@ -7,8 +7,7 @@ import { format } from 'date-fns';
 
 import useCountries from "@/app/hooks/useCountries";
 import { 
-//   SafeListing, 
-//   SafeReservation, 
+  SafeListing, 
   SafeUser 
 } from "@/app/types";
 
@@ -19,9 +18,9 @@ import { Listing, Reservation } from "@prisma/client";
 import { GiBathtub, GiBed, GiHouse } from "react-icons/gi";
 
 interface ListingCardProps {
-  data: Listing;
+  data: SafeListing;
   reservation?: Reservation;
-  onAction?: (id: string) => void;
+  onAction?: (id: number) => void;
   disabled?: boolean;
   actionLabel?: string;
   actionId?: string;
@@ -78,7 +77,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
     onClick={() => router.push(`/listings/${data.id}`)}
     className="col-span-1 cursor-pointer group"
     >
-        <div className="w-full h-3/4 flex flex-col gap-2">
+        <div className="w-full flex flex-col gap-2">
             <div className="aspect-square 
             relative overflow-hidden
             rounded-t-lg w-full">
