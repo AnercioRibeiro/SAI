@@ -90,7 +90,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
                                                 transition"/>
                     <div className="absolute top-3 right-3">
                         <HeartButton 
-                            listingId={data.id}
+                            listingId={data.id.toString()}
                             currentUser={currentUser}
                             />
 
