@@ -6,8 +6,8 @@ import axios from "axios";
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Reservation } from "@prisma/client";
-import { SafeListing, SafeUser } from "@/app/types";
+
+import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 import { categories } from "@/app/components/navbar/Categories";
 import  Container  from "@/app/components/Container";
 import ListingHead from "@/app/components/listings/ListingHead";
@@ -23,7 +23,7 @@ const initialDateRange = {
 }
 
 interface ListingClientProps{
-    reservations?: Reservation[];
+    reservations?: SafeReservation[];
     listing: SafeListing & {
         user: SafeUser
     };
@@ -58,36 +58,43 @@ currentUser
 
     const onCreateReservation = useCallback(() => {
         if (!currentUser) {
-            return loginModal.onOpen();
+          return loginModal.onOpen();
         }
         setIsLoading(true);
-        axios.post('/api/reservations', {
+    
+        // Display a loading toast while the reservation request is being processed
+        const loadingToastId = toast.loading('Carregando...');
+    
+        axios
+          .post('/api/reservations', {
             totalPrice,
             startDate: dateRange.startDate,
             endDate: dateRange.endDate,
-            listingId: listing?.id     
-        })
-        .then(() => {
+            listingId: listing?.id,
+          })
+          .then(() => {
             toast.success('Reserva feita');
             setDateRange(initialDateRange);
             //redirect to trips
             router.refresh();
-        })
-        .catch(()=> {
+          })
+          .catch(() => {
             toast.error('Algo deu errado');
-        })
-        .finally(() => {
+          })
+          .finally(() => {
             setIsLoading(false);
-        })
-
-    },[
+            // Remove the loading toast when the request is complete
+            toast.dismiss(loadingToastId);
+          });
+      }, [
         totalPrice,
         dateRange,
         listing?.id,
         router,
         currentUser,
-        loginModal
-    ]);
+        loginModal,
+      ]);
+    
 
     useEffect(() => {
         if (dateRange.startDate && dateRange.endDate) {
