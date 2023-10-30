@@ -1,7 +1,7 @@
 import prisma from "@/app/libs/prismadb";
 
 interface IParams{
-    listingId?: string;
+    imovelId?: string;
     
 }
 
@@ -13,29 +13,29 @@ export default async function getListingById(
 
     try {
         
-        const { listingId } = params;
-        const listing = await prisma.listing.findUnique({
+        const { imovelId } = params;
+        const imovel = await prisma.imovel.findUnique({
             where: {
-                id: parseInt(listingId as string),
+                id: parseInt(imovelId as string),
             },
             include: {
-                user: true
+                utilizador: true
             }
         });
 
-        if (!listing) {
+        if (!imovel) {
            return null; 
         }
 
         return {
-            ...listing,
-            createdAt: listing.createdAt.toISOString(),
+            ...imovel,
+            createdAt: imovel.createdAt.toISOString(),
             user: {
-                ...listing.user,
-                createdAt: listing.user.createdAt.toISOString(),
-                updatedAt: listing.user.updatedAt.toISOString(),
+                ...imovel.utilizador,
+                createdAt: imovel.utilizador.createdAt.toISOString(),
+                updatedAt: imovel.utilizador.updatedAt.toISOString(),
                 emailVerified: 
-                    listing.user.emailVerified?.toISOString() || null,
+                    imovel.utilizador.emailVerified?.toISOString() || null,
                 
             }
         }

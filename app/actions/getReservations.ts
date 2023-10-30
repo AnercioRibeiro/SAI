@@ -1,8 +1,8 @@
 import { Prisma } from "@prisma/client";
 
 interface IParams {
-    listingId?: string;
-    userId?: string;
+    imovelId?: string;
+    utilizadorId?: string;
     authorId?: string;
 }
 
@@ -10,40 +10,40 @@ export default async function getReservations(
     params: IParams
 ) {
     try {
-    const { listingId, userId, authorId } = params;
+    const { imovelId, utilizadorId, authorId } = params;
     const query: any = {};
 
-    if (listingId) {
-        query.listingId = parseInt(listingId as string);
+    if (imovelId) {
+        query.imovelId = parseInt(imovelId as string);
     }
 
-    if (userId) {
-        query.userId = parseInt(userId as string);
+    if (utilizadorId) {
+        query.utilizadorId = parseInt(utilizadorId as string);
     }
 
     if (authorId) {
-        query.listing = { userId: authorId }
+        query.imovel = { utilizadorId: authorId }
     }
 
-    const reservations = await prisma?.reservation.findMany({
+    const alugueis = await prisma?.aluguel.findMany({
         where: query,
         include: {
-            listing: true,
+            imovel: true,
         },
         orderBy: {
             createdAt: 'desc'
         }
     });
 
-    const safeReservations = reservations?.map(
-        (reservation) => ({
-            ...reservation,
-            createdAt: reservation.createdAt.toISOString(),
-            startDate: reservation.startDate.toISOString(),
-            endDate: reservation.endDate.toISOString(),
-            listing: {
-                ...reservation.listing,
-                createdAt: reservation.listing.createdAt.toISOString()
+    const safeReservations = alugueis?.map(
+        (aluguel) => ({
+            ...aluguel,
+            createdAt: aluguel.createdAt.toISOString(),
+            startDate: aluguel.startDate.toISOString(),
+            endDate: aluguel.endDate.toISOString(),
+            imovel: {
+                ...aluguel.imovel,
+                createdAt: aluguel.imovel.createdAt.toISOString()
             }
         })
     )

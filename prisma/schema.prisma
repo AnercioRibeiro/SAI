@@ -9,7 +9,7 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-model Listing {
+model Imovel {
   id             Int        @id @default(autoincrement())
   title          String
   description    String
@@ -20,33 +20,33 @@ model Listing {
   bathroomCount  Int
   guestCount     Int
   locationValue  String
-  userId         Int
-  imags         Imag[]
+  utilizadorId         Int
 
-  user           User       @relation(fields: [userId], references: [id])
-  reservations   Reservation[]
+  utilizador           Utilizador       @relation(fields: [utilizadorId], references: [id])
+  alugueis   Aluguel[]
 
   price          Int
 }
-model User {
+model Utilizador {
   id              Int        @id @default(autoincrement())
   name            String?
   email           String?   @unique
   emailVerified   DateTime?
   image           String?
   hashedPassword  String?
+  userType        String?
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
-  favoriteIds     String[]
-  accounts       Account[]
-  listings       Listing[]
-  reservations   Reservation[]
+  favoritoIds     String[]
+  contas       Conta[]
+  imoveis       Imovel[]
+  alugueis   Aluguel[]
 }
 
 
-model Account {
+model Conta {
   id                Int       @id @default(autoincrement())
-  userId            Int
+  utilizadorId            Int
   type              String
   provider          String
   providerAccountId String
@@ -58,27 +58,20 @@ model Account {
   id_token          String?
   session_state     String?
 
-  user              User      @relation(fields: [userId], references: [id])
+  utilizador              Utilizador      @relation(fields: [utilizadorId], references: [id])
 
   @@unique([provider, providerAccountId])
 }
 
-model Reservation {
+model Aluguel {
   id         Int      @id @default(autoincrement())
-  userId     Int
-  listingId  Int
+  utilizadorId     Int
+  imovelId  Int
   startDate  DateTime
   endDate    DateTime
   totalPrice Int
   createdAt  DateTime @default(now())
 
-  user User @relation(fields: [userId], references: [id])
-  listing Listing  @relation(fields: [listingId], references: [id])
-}
-
-model Imag {
-  id         Int      @id @default(autoincrement())
-  imageSrc   String
-  listingId  Int
-  listing Listing  @relation(fields: [listingId], references: [id])
+  utilizador Utilizador @relation(fields: [utilizadorId], references: [id])
+  imovel Imovel  @relation(fields: [imovelId], references: [id])
 }

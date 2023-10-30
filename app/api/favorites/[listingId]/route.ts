@@ -4,7 +4,7 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import prisma from "@/app/libs/prismadb";
 
 interface IParams {
-  listingId?: string;
+  imovelId?: string;
 }
 
 export async function POST(
@@ -17,22 +17,22 @@ export async function POST(
     return NextResponse.error();
   }
 
-  const { listingId } = params;
+  const { imovelId } = params;
 
-  if (!listingId || typeof listingId !== 'string') {
+  if (!imovelId || typeof imovelId !== 'string') {
     throw new Error('Identificador inválido');
   }
 
-  let favoriteIds = [...(currentUser.favoriteIds || [])];
+  let favoritoIds = [...(currentUser.favoritoIds || [])];
 
-  favoriteIds.push(listingId);
+  favoritoIds.push(imovelId);
 
-  const user = await prisma.user.update({
+  const user = await prisma.utilizador.update({
     where: {
       id: currentUser.id
     },
     data: {
-      favoriteIds
+      favoritoIds
     }
   });
 
@@ -49,22 +49,22 @@ export async function DELETE(
     return NextResponse.error();
   }
 
-  const { listingId } = params;
+  const { imovelId } = params;
 
-  if (!listingId || typeof listingId !== 'string') {
+  if (!imovelId || typeof imovelId !== 'string') {
     throw new Error('Identificador inválido');
   }
 
-  let favoriteIds = [...(currentUser.favoriteIds || [])];
+  let favoritoIds = [...(currentUser.favoritoIds || [])];
 
-  favoriteIds = favoriteIds.filter((id) => id !== listingId);
+  favoritoIds = favoritoIds.filter((id) => id !== imovelId);
 
-  const user = await prisma.user.update({
+  const user = await prisma.utilizador.update({
     where: {
       id: currentUser.id
     },
     data: {
-      favoriteIds
+      favoritoIds
     }
   });
 

@@ -13,6 +13,8 @@ import Heading from '../Heading';
 
 import toast from 'react-hot-toast';
 import Button from '../Button';
+import UserTypeSelect from '../inputs/UserTypeSelect';
+
 
 
 const RegisterModal = () => {
@@ -22,6 +24,8 @@ const RegisterModal = () => {
     const { 
         register, 
         handleSubmit, 
+        watch,
+        setValue,
         formState: {
             errors,
     } 
@@ -29,10 +33,20 @@ const RegisterModal = () => {
     defaultValues: {
         name: '',
         email: '',
-        password: ''
+        password: '',
+        userType: ''
     }
 });
 
+const userType = watch('userType');
+const setCustomValue = (id: string, value: any) =>{
+    setValue(id, value, {
+        shouldDirty: true,
+        shouldTouch: true,
+        shouldValidate: true
+
+    })
+}
 // const onSubmit: SubmitHandler<FieldValues> = (data) => {
 //     setIsLoading(true);
 //     toast.loading('Carregando...', {
@@ -52,10 +66,13 @@ const RegisterModal = () => {
 // }
 
 const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    const selectedUserType = data.userType.value;
     // Show a loading toast while the request is being made
     const loadingToast = toast.loading('Carregando...');
   
     try {
+    
+      data.userType = selectedUserType;
       const response = await axios.post('/api/register', data);
       
       // If the request succeeds, show a success toast
@@ -101,6 +118,8 @@ const bodyContent = (
             errors={errors}
             required
                     />
+            <UserTypeSelect
+                    value={userType} onChange={(value) => setCustomValue('userType', value)} />
             <Input 
                 id="password"
             type="password"

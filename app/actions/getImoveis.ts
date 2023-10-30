@@ -2,15 +2,15 @@ import  prisma  from "@/app/libs/prismadb";
 
 export default async function getListings() {
     try {
-        const listings = await prisma.listing.findMany({
+        const imoveis = await prisma.imovel.findMany({
 
             orderBy: {
                 createdAt: 'desc'
             }
         });
-        const safeListings = listings.map((listing) => ({
-            ...listing,
-            createdAt: listing.createdAt.toISOString(),
+        const safeListings = imoveis.map((imovel) => ({
+            ...imovel,
+            createdAt: imovel.createdAt.toISOString(),
         }));
         return safeListings;
     } catch (error: any) {

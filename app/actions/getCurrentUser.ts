@@ -15,11 +15,17 @@ export default async function getCurrentUser() {
         return null;
       }
 
-      const currentUser = await prisma.user.findUnique({
+      const currentUser = await prisma.utilizador.findUnique({
         where: {
             email: session.user.email as string
         }
       });
+
+      if (currentUser?.userType == "Inquilino") {
+        console.log("Inquilino: "+currentUser)
+      }else{
+        console.log("Proprietário: "+currentUser)
+      }
 
       if (!currentUser) {
         return null;

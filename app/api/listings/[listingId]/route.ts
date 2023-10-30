@@ -4,7 +4,7 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import prisma from "@/app/libs/prismadb";
 
 interface IParams {
-  listingId?: string;
+  imovelId?: string;
 }
 
 export async function DELETE(
@@ -17,18 +17,18 @@ export async function DELETE(
     return NextResponse.error();
   }
 
-  const { listingId } = params;
+  const { imovelId } = params;
 
-  if (!listingId || typeof listingId !== 'string') {
+  if (!imovelId || typeof imovelId !== 'string') {
     throw new Error('Invalid ID');
   }
 
-  const listing = await prisma.listing.deleteMany({
+  const imovel = await prisma.imovel.deleteMany({
     where: {
-      id: parseInt(listingId as string),
-      userId: currentUser.id
+      id: parseInt(imovelId as string),
+      utilizadorId: currentUser.id
     }
   });
 
-  return NextResponse.json(listing);
+  return NextResponse.json(imovel);
 }

@@ -1,5 +1,5 @@
 import getCurrentUser from "./actions/getCurrentUser";
-import getListings from "./actions/getListings";
+import getListings from "./actions/getImoveis";
 
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container";
